@@ -1,3 +1,4 @@
+import Header from '@/components/Header/Index'
 import Head from 'next/head'
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       </Head>
 
       <>
+        <Header />
         <h1>Home Page</h1>
       </>
     </>

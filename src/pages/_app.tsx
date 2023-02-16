@@ -5,7 +5,7 @@ import GlobalStyle from '../styles/globals'
 const theme: DefaultTheme = {
   colors: {
     primary: '#f73f01',
-    secondary: '#0070f3'
+    secondary: '#000'
   }
 }
 
