@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { faFacebookSquare, faInstagram, faYoutube } from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Logo from "@/assets/logo.png"
 import { Contact, FooterContainer, SocialNetworkIcon, SocialNetworkList, StyledFooter } from "./styles";

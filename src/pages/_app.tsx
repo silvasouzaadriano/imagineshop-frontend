@@ -9,7 +9,7 @@ config.autoAddCss = false;
 const theme: DefaultTheme = {
   colors: {
     primary: '#f73f01',
-    secondary: '#000'
+    secondary: '#777'
   }
 }
 

@@ -30,6 +30,6 @@ export const SocialNetworkList = styled.ul`
 `
 
 export const SocialNetworkIcon = styled(FontAwesomeIcon)`
-  color: ${({ theme }) => theme.colors.secondary};
+  color: ${({theme}) => theme.colors.secondary};
   font-size: 1.875rem;
 `
