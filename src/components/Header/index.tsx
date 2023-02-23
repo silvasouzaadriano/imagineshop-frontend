@@ -7,7 +7,6 @@ import ShoppingCartLogo from '../../assets/carrinho.png'
 import { MenuItem, MenuList, Navbar, StyledHeader } from './styles'
 
 
-
 export default function Header () {
   const number = 0
   return (
