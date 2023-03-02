@@ -1,4 +1,7 @@
+import Banner from '@/components/Banner'
 import Head from 'next/head'
+
+import BannerImage from '../../public/images/banner.png'
 
 export default function Home() {
   return (
@@ -11,7 +14,7 @@ export default function Home() {
       </Head>
 
       <>
-        <h1>Home Page</h1>
+        <Banner image={BannerImage} width={1140} height={325} />
       </>
     </>
   )
