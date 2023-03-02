@@ -1,8 +1,8 @@
 import Image from "next/image"
 import Link from "next/link"
 
-import Logo from '../../assets/logo.png'
-import ShoppingCartLogo from '../../assets/carrinho.png'
+import Logo from '../../../public/images/logo.png'
+import ShoppingCartLogo from '../../../public/images/carrinho.png'
 
 import { MenuItem, MenuList, Navbar, StyledHeader } from './styles'
 
