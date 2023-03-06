@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Dashboard from './dasbhoard';
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const api = 'https://imagineshop.fly.dev';
+  const api = 'http://localhost:8080';
   const result = await fetch(`${api}/products`);
   const data = await result.json();
   data.forEach((product: any) => {

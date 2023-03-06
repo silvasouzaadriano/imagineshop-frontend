@@ -5,7 +5,7 @@ const nextConfig = {
     styledComponents: true,
   },
   images: {
-    domains: ['imagineshop.fly.dev']
+    domains: ['imagineshop.fly.dev', 'localhost']
   }
 }
 
