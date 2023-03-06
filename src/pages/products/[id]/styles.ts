@@ -58,6 +58,10 @@ export const Button = styled.button`
   margin: 2.25rem 0;
 `;
 
+export const ProductDescription = styled.small`
+  font-size: 0.875rem;
+`
+
 export const SummaryTitle = styled.p`
   font-size: 1.875rem;
   font-weight: 700;
