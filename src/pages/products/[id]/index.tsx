@@ -14,6 +14,7 @@ import {
 
 import BannerImage from '../../../../public/images/banner2.png';
 import FakeProductImage from '../../../../public/images/celular1.png';
+import ShoppingCartLogo from '../../../../public/images/carrinho-white.png'
 
 export default function ProductId() {
   return (
@@ -27,7 +28,15 @@ export default function ProductId() {
           <ProductName>Celular 1</ProductName>
           <ProductPrice>R$ 10,00</ProductPrice>
           <ProductSplitPrice>10x de R$ 10,00 sem juros</ProductSplitPrice>
-          <Button>Adicionar ao carrinho</Button>
+          <Button>
+            <Image 
+                src={ShoppingCartLogo} 
+                width={22} 
+                height={22} 
+                alt="shopping cart image" 
+              />
+            <p>Adicionar ao carrinho</p>
+          </Button>
           <small>
             Meu Celular 1
           </small>

@@ -41,7 +41,10 @@ export const ProductSplitPrice = styled.small`
 `;
 
 export const Button = styled.button`
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
   border: unset;
   border-radius: 4px;
   width: 290px;
