@@ -24,7 +24,7 @@ export default function Products({ products }: ProductProps) {
       <ProductList>
         {products && products.map(product => (
           <ProductItem key={product._id}>
-            <Link href="/home">
+            <Link href={`/products/${product._id}`}>
               <Image src={product.image} width={230} height={230} alt='Product image'/>
             </Link>
             <ProductName>{product.name}</ProductName>
