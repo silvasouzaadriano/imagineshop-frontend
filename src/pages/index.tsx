@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
-import Dashboard from './dasbhoard';
+import Products from './products';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const api = 'http://localhost:8080';
@@ -27,7 +27,7 @@ export default function Home({ productsApi }: any) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/logo.ico" />
       </Head>
-      <Dashboard productList={productsApi}/>
+      <Products productList={productsApi}/>
     </>
   )
 }
