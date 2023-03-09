@@ -1,8 +1,17 @@
+import { useContext, useEffect } from 'react'
 import Head from 'next/head'
+import { ShoppingCartContext } from '@/contexts/ShoppingCartContext'
 
 
 
 export default function ShoppingCart() {
+  const { getProducts } = useContext(ShoppingCartContext)
+
+  useEffect(() => {
+    const products = getProducts();
+    console.log(products)
+  }, [getProducts])
+
   return (
     <>
       <Head>
