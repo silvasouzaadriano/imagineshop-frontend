@@ -1,18 +1,11 @@
 import Link from "next/link";
 import Image from 'next/image';
 import { ProductContainer, ProductItem, ProductList, ProductName, ProductPrice, ProductSplitPrice, Title } from "./styles";
+import { IProduct } from "@/types";
 
-interface Product {
-  _id: string;
-  name: string;
-  image: string;
-  price: number;
-  formattedPrice: string;
-  splitPrice: string;
-}
 
 interface ProductProps {
-  products: Product[];
+  products: IProduct[];
 }
 
 export default function Products({ products }: ProductProps) {
