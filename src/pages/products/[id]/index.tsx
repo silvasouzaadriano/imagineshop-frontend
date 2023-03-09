@@ -1,4 +1,5 @@
 import { GetServerSideProps } from 'next';
+import { useContext } from 'react';
 import Image from 'next/image';
 import Banner from "@/components/Banner";
 import {
@@ -17,6 +18,7 @@ import {
 import BannerImage from '../../../../public/images/banner2.png';
 import ShoppingCartLogo from '../../../../public/images/carrinho-white.png'
 import { IProduct } from '@/types';
+import { ShoppingCartContext } from '@/contexts/ShoppingCartContext';
 
 interface ProductsProps {
   product: IProduct;
@@ -38,6 +40,12 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 }
 
 export default function ProductId({ product }: ProductsProps) {
+  const { addProduct } = useContext(ShoppingCartContext)
+
+  const addProductInShoppingCart = (product: IProduct) => {
+    addProduct(product);
+  }
+
   return (
     <ProductContainer>
       <Banner image={BannerImage} width={1140} height={145} />
@@ -49,7 +57,7 @@ export default function ProductId({ product }: ProductsProps) {
           <ProductName>{product.name}</ProductName>
           <ProductPrice>{product.formattedPrice}</ProductPrice>
           <ProductSplitPrice>10x de {product.splitPrice} sem juros</ProductSplitPrice>
-          <Button>
+          <Button onClick={() => addProductInShoppingCart(product)}>
             <Image 
                 src={ShoppingCartLogo} 
                 width={22} 
