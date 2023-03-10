@@ -1,16 +1,8 @@
-import { useContext, useEffect } from 'react'
+import useShoppingCartStore from '@/stores/ShoppingCartStore'
 import Head from 'next/head'
-import { ShoppingCartContext } from '@/contexts/ShoppingCartContext'
-
-
 
 export default function ShoppingCart() {
-  const { getProducts } = useContext(ShoppingCartContext)
-
-  useEffect(() => {
-    const products = getProducts();
-    console.log(products)
-  }, [getProducts])
+  const products = useShoppingCartStore(state => state.products)
 
   return (
     <>
@@ -21,6 +13,10 @@ export default function ShoppingCart() {
         <link rel="icon" href="/logo.ico" />
       </Head>
       <h1>Meu Carrinho</h1>
+      <br/>
+      {products && products.map(product => (
+        <p key={product._id}>{product.name}</p>
+      ))}
     </>
   )
 }
