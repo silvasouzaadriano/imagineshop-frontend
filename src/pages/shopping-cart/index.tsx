@@ -15,7 +15,15 @@ import {
   DeleteIcon,
   Product,
   ProductName,
-  ProductPrice
+  ProductPrice,
+  ShoppingCartPayment,
+  PaymentTitle,
+  PaymentValue,
+  PaymentShipping,
+  PaymentTotal,
+  LoginTitle,
+  InputGroup,
+  Button
 } from './styles'
 
 export default function ShoppingCart() {
@@ -60,6 +68,27 @@ export default function ShoppingCart() {
                 </div>
               ))
             }
+          </section>
+          <section>
+            <ShoppingCartPayment>
+              <PaymentTitle>1. Resumo do pedido</PaymentTitle>
+              <PaymentValue><span>{products.length} Produtos</span> <span>R$ 0.00</span></PaymentValue>
+              <PaymentShipping><span>Frete</span> <span>R$ 0.00 </span></PaymentShipping>
+              <PaymentTotal><span>Total</span> <span>R$ 0.00</span></PaymentTotal>
+              <Separator />
+              <LoginTitle>2. Login</LoginTitle>
+              <InputGroup>
+                <span>E-MAIL:</span>
+                <input type="text" />
+              </InputGroup>
+              <InputGroup>
+                <span>SENHA:</span>
+                <input type="password" />
+              </InputGroup>
+              <Button>
+                Continuar
+              </Button>
+            </ShoppingCartPayment>
           </section>
         </ShoppingCartContainer>
       </Main>
