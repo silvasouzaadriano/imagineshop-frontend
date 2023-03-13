@@ -19,8 +19,9 @@ const ShoppingCartProvider = ({ children }: any) => {
 
   const addProduct = (product: IProduct) => {
     const products = getProducts();
+    const productAlreadyExists = products.find(prod => prod._id === product._id);
+    if (productAlreadyExists) return;
     products.push(product)
-
     if (isBrowser) {
       sessionStorage.setItem(SESSION_STORAGE, JSON.stringify(products))
     }
