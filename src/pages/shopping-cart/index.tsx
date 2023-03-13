@@ -1,15 +1,30 @@
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import Head from 'next/head'
+import Image from 'next/image';
+import { faX } from '@fortawesome/free-solid-svg-icons'
 import { ShoppingCartContext } from '@/contexts/ShoppingCartContext'
+import { IProduct } from '@/types'
 
-
+import {
+  Main,
+  Title,
+  SubTitle,
+  ShoppingCartContainer,
+  Separator,
+  ButtonContainer,
+  DeleteIcon,
+  Product,
+  ProductName,
+  ProductPrice
+} from './styles'
 
 export default function ShoppingCart() {
   const { getProducts } = useContext(ShoppingCartContext)
+  const [products, setProducts] = useState<IProduct[]>([])
 
   useEffect(() => {
-    const products = getProducts();
-    console.log(products)
+    const values = getProducts();
+    setProducts(values);
   }, [getProducts])
 
   return (
@@ -20,7 +35,34 @@ export default function ShoppingCart() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/logo.ico" />
       </Head>
-      <h1>Meu Carrinho</h1>
+      <Main>
+        <Title>Meu Carrinho</Title>
+        <SubTitle>Produtos</SubTitle>
+        <ShoppingCartContainer>
+          <section>
+            <Separator />
+            {
+              products && products.map(product => (
+                <div key={product._id}>
+                  <ButtonContainer>
+                    <button>
+                      <DeleteIcon icon={faX}></DeleteIcon>
+                    </button>
+                  </ButtonContainer>
+                  <Product>
+                    <div>
+                      <Image src={product.image} width={180} height={180} alt={product.name} />
+                    </div>
+                    <ProductName>{product.name}</ProductName>
+                    <ProductPrice>{product.formattedPrice}</ProductPrice>
+                  </Product>
+                  <Separator />
+                </div>
+              ))
+            }
+          </section>
+        </ShoppingCartContainer>
+      </Main>
     </>
   )
 }
