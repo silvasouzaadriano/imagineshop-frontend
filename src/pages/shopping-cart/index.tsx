@@ -27,13 +27,26 @@ import {
 } from './styles'
 
 export default function ShoppingCart() {
-  const { getProducts } = useContext(ShoppingCartContext)
+  const { 
+    getProducts,
+    deleteProduct,
+    getTotalValue,
+    getTotalProducts,
+    getShippingValue
+  } = useContext(ShoppingCartContext)
+
   const [products, setProducts] = useState<IProduct[]>([])
+  const [refresh, setRefresh] = useState<number>(0);
 
   useEffect(() => {
     const values = getProducts();
     setProducts(values);
-  }, [getProducts])
+  }, [getProducts, refresh])
+
+  const handleDeleteProduct = (id: string) => {
+    deleteProduct(id);
+    setRefresh(oldValue => oldValue + 1);
+  }
 
   return (
     <>
@@ -53,7 +66,7 @@ export default function ShoppingCart() {
               products && products.map(product => (
                 <div key={product._id}>
                   <ButtonContainer>
-                    <button>
+                  <button onClick={() => handleDeleteProduct(product._id)}>
                       <DeleteIcon icon={faX}></DeleteIcon>
                     </button>
                   </ButtonContainer>
@@ -72,9 +85,9 @@ export default function ShoppingCart() {
           <section>
             <ShoppingCartPayment>
               <PaymentTitle>1. Resumo do pedido</PaymentTitle>
-              <PaymentValue><span>{products.length} Produtos</span> <span>R$ 0.00</span></PaymentValue>
-              <PaymentShipping><span>Frete</span> <span>R$ 0.00 </span></PaymentShipping>
-              <PaymentTotal><span>Total</span> <span>R$ 0.00</span></PaymentTotal>
+              <PaymentValue><span>{products.length} Produtos</span> <span>{getTotalProducts()}</span></PaymentValue>
+              <PaymentShipping><span>Frete</span> <span>{getShippingValue()}</span></PaymentShipping>
+              <PaymentTotal><span>Total</span> <span>{getTotalValue()}</span></PaymentTotal>
               <Separator />
               <LoginTitle>2. Login</LoginTitle>
               <InputGroup>
