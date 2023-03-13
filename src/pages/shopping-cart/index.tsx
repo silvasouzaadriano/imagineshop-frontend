@@ -3,6 +3,8 @@ import Head from 'next/head'
 import Image from 'next/image';
 import { faX } from '@fortawesome/free-solid-svg-icons'
 import { ShoppingCartContext } from '@/contexts/ShoppingCartContext'
+import useShoppingCartStore from '@/stores/ShoppingCartStore'
+
 import { IProduct } from '@/types'
 
 import {
@@ -27,21 +29,21 @@ import {
 } from './styles'
 
 export default function ShoppingCart() {
-  const { 
-    getProducts,
+  const {
+    products: productList,
     deleteProduct,
     getTotalValue,
     getTotalProducts,
     getShippingValue
-  } = useContext(ShoppingCartContext)
+  } = useShoppingCartStore();
 
   const [products, setProducts] = useState<IProduct[]>([])
   const [refresh, setRefresh] = useState<number>(0);
 
   useEffect(() => {
-    const values = getProducts();
+    const values = productList;
     setProducts(values);
-  }, [getProducts, refresh])
+  }, [productList, refresh])
 
   const handleDeleteProduct = (id: string) => {
     deleteProduct(id);

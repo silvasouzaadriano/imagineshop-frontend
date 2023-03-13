@@ -18,7 +18,7 @@ import {
 import BannerImage from '../../../../public/images/banner2.png';
 import ShoppingCartLogo from '../../../../public/images/carrinho-white.png'
 import { IProduct } from '@/types';
-import { ShoppingCartContext } from '@/contexts/ShoppingCartContext';
+import useShoppingCartStore from '@/stores/ShoppingCartStore';
 
 interface ProductsProps {
   product: IProduct;
@@ -40,7 +40,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 }
 
 export default function ProductId({ product }: ProductsProps) {
-  const { addProduct } = useContext(ShoppingCartContext)
+  const addProduct = useShoppingCartStore(state => state.addProduct)
 
   const addProductInShoppingCart = (product: IProduct) => {
     addProduct(product);
