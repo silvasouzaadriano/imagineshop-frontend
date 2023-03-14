@@ -16,6 +16,9 @@ const ShippingValue = 100;
 const useShoppingCartStore = create<ShoppingCart>((set, get) => ({
   products: [],
   addProduct: (product: IProduct) => {
+    const products = get().products;
+    const productAlreadyExists = products.find(prod => prod._id === product._id);
+    if (productAlreadyExists) return;
     set(state => ( { products: [...state.products, product]} ))
   },
   deleteProduct: (id: string): void => {
