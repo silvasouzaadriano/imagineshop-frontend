@@ -1,6 +1,8 @@
 import { GetServerSideProps } from 'next';
 import { useContext } from 'react';
 import Image from 'next/image';
+import { toast } from 'react-toastify';
+
 import Banner from "@/components/Banner";
 import {
   ProductContainer,
@@ -44,6 +46,10 @@ export default function ProductId({ product }: ProductsProps) {
 
   const addProductInShoppingCart = (product: IProduct) => {
     addProduct(product);
+    toast.success("Produto adicionado no carrinho", {
+      position: "bottom-right",
+      theme: "colored"
+    });
   }
 
   return (

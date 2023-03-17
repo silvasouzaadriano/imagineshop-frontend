@@ -1,6 +1,8 @@
 import type { AppProps } from 'next/app'
 import { ThemeProvider, DefaultTheme } from 'styled-components'
 import { config } from '@fortawesome/fontawesome-svg-core';
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import GlobalStyle from '../styles/globals'
 import Layout from '@/components/Layout';
@@ -23,6 +25,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <ShoppingCartProvider>
           <Layout>
             <Component {...pageProps} />
+            <ToastContainer autoClose={3000} />
           </Layout>
         </ShoppingCartProvider>
       </ThemeProvider>

@@ -3,6 +3,8 @@ import Head from 'next/head'
 import Image from 'next/image';
 import { useRouter } from 'next/router'
 import { faX } from '@fortawesome/free-solid-svg-icons'
+import { toast } from 'react-toastify';
+
 import { ShoppingCartContext } from '@/contexts/ShoppingCartContext'
 import { IProduct } from '@/types'
 
@@ -86,7 +88,10 @@ export default function ShoppingCart() {
     const api = 'http://localhost:8080';
     const token = await getTokenLogin(api, email, password);
     if (!token) {
-      alert("Login inválido")
+      toast.error("Login inválido", {
+        position: "bottom-right",
+        theme: "colored"
+      });
       setEmail('')
       setPassword('')
       return;
@@ -95,7 +100,10 @@ export default function ShoppingCart() {
     products.map(product => productIds.push(product._id));
     const sell = await sellProducts(api, token, productIds)
     if (!sell) {
-      alert("Compra inválida")
+      toast.error("Compra inválida", {
+        position: "bottom-right",
+        theme: "colored"
+      });
       setEmail('')
       setPassword('')
       return;
